@@ -1,0 +1,416 @@
+<html>
+    <head><style type="text/css" id="dcoder_stylesheet">.container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  
+  }
+  
+  label {
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .result {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .result h3 {
+    margin-bottom: 10px;
+  }
+  </style></head><body>
+    <div class="container">
+      
+    <h1>Perhitungan Pengisian Daya Baterai</h1>
+    <form>
+      <label for="voltage">Voltase Input (V)</label>
+      <input type="number" id="voltage" name="voltage" placeholder="Masukan Voltase">
+  
+      <label for="ampere">Arus Input (A)</label>
+      <input type="number" id="ampere" name="ampere" placeholder="Masukan Arus">
+  
+      <label for="capacity">Kapasitas Baterai (Wh)</label>
+      <input type="number" id="capacity" name="capacity" placeholder="Masukan Kapasitas">
+  
+      <button type="button" id="calculateBtn" onclick="calculateWaktuPengisian()">Hitung</button>
+    </form>
+    
+    <div class="result">
+      <h3>Hasil:</h3>
+      <p id="WaktuPengisian"></p>
+    </div>
+  </div>
+      <script type="text/javascript" id="dcoder_script">function calculateWaktuPengisian() {
+    let voltage = document.getElementById('voltage').value;
+    let ampere = document.getElementById('ampere').value;
+    let capacity = document.getElementById('capacity').value;
+    
+    let watt = voltage * ampere;
+    let time = capacity / watt;
+  
+    document.getElementById('WaktuPengisian').innerHTML = "Waktu Pengisian Baterai: " + time.toFixed(2) + " Jam";
+  }
+  </script></body>
+
+
+   
+      <style>
+        body {
+          font-family: sans-serif;
+          text-align: center;
+          
+        }
+        .container {
+        margin: 50px auto;
+         max-width: 600px;
+        padding: 20px;
+        background-color: #222;
+        border-radius: 10px;
+        }
+        h1 {
+          margin-top: 50px;
+        }
+        label {
+          display: block;
+          margin-top: 20px;
+        }
+        input {
+          padding: 5px;
+          font-size: 16px;
+        }
+        button {
+          margin-top: 20px;
+          padding: 10px 20px;
+          font-size: 18px;
+          background-color: #4CAF50;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #3e8e41;
+        }
+        #result {
+          font-size: 24px;
+          margin-top: 20px;
+        }
+
+      </style>
+    </head>
+    <body> 
+        <div class="container">
+      <h1>Perhitungan Waktu Pengisian Daya Baterai</h1>
+      <form>
+        <label>
+          Voltase Baterai (V): </label>
+          <input type="number" id="voltage" min="0" step="0.01"  placeholder="Masukan Voltase" required>
+        
+        <label>
+          Kapasitas Baterai (mAh): </label>
+          <input type="number" id="capacity" min="0"  placeholder="Masukan Kapasitas" required>
+        
+        <label>
+          Arus Cas (mA): </label>
+          <input type="number" id="current" min="0"  placeholder="Masukan Arus Cas" required>
+        
+        <button type="button" onclick="calculateChargeTime()">Hitung</button>
+      </form>
+      <div id="result"></div>
+      <script>
+        function calculateChargeTime() {
+          let voltage = document.getElementById('voltage').value;
+          let capacity = document.getElementById('capacity').value;
+          let current = document.getElementById('current').value;
+          let time = (capacity / current) * 1.4;
+          let hours = Math.floor(time);
+          let minutes = Math.floor((time - hours) * 60);
+          let seconds = Math.floor((((time - hours) * 60) - minutes) * 60);
+          let result = document.getElementById('result');
+          result.innerHTML = 'Waktu Pengecasan: ' + hours + ' jam ' + minutes + ' menit ' + seconds + ' detik';
+        }
+      </script>
+      </div>
+    </body>
+  
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css" id="dcoder_stylesheet">body {
+  font-family: Arial, sans-serif;
+}
+.container {
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+}
+h1 {
+  text-align: center;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+    </style></head>
+    <div class="container">
+<body>
+  <h1>Perhitungan Daya Keluaran</h1>
+    <form>
+    <label for="ampere">Ampere:</label>
+    <input type="number" id="ampere" name="ampere" step="0.01"  placeholder="Masukan Ampere" required> <br>
+
+    <label for="voltase">Voltase:</label>
+    <input type="number" id="voltase" name="voltase" step="0.01"  placeholder="Masukan Voltase" required><br>
+
+    <label for="waktu">Waktu pemakaian (jam):</label>
+    <input type="number" id="waktu" name="waktu" step="0.01"  placeholder="Masukan Waktu Pemakaian" required><br>
+
+    <button type="button" onclick="hitung()">Hitung</button><br>
+
+    <label for="watt">Hasil (Watt):</label>
+    <input type="number" id="watt" name="watt" readonly>
+  </form>
+
+  <script>
+    function hitung() {
+      var ampere = document.getElementById("ampere").value;
+      var voltase = document.getElementById("voltase").value;
+      var waktu = document.getElementById("waktu").value;
+
+      var watt = ampere * voltase;
+      var totalWatt = watt * waktu;
+
+      document.getElementById("watt").value = totalWatt;
+    }
+
+  </script>
+</div>
+</body>
+<style>
+    #calculator {
+      width: 300px;
+      margin: auto;
+      background-color: #222;
+      border: 1px solid #222;
+      padding: 10px;
+      text-align: center;
+    }
+    .container {
+       margin: 50px auto;
+       max-width: 600px;
+       padding: 20px;
+       background-color: #222;
+       border-radius: 10px;
+    }
+    input[type="button"] {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+      margin: 5px;
+      border-radius: 50%;
+      border: none;
+      color: #fff;
+      background-color: #666;
+      cursor: pointer;
+    }
+    input[type="text"] {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      border: none;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+
+
+    <link rel="stylesheet" href="style.css">
+  <style type="text/css" id="dcoder_stylesheet">body {
+  background-color: #0281024d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 50%;
+  max-width: 200px;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  padding: 10px;
+}
+
+td:first-child {
+  width: 150px;
+}
+</style></head>
+  <body>
+    <div class="container">
+      <h1>Biodata Diri</h1>
+   
+      <table>
+        <tbody><tr>
+          <td>Nama</td>
+          <td>:</td>
+          <td>Dicky Wahyudi</td>
+        </tr>
+        <tr>
+          <td>Alamat</td>
+          <td>:</td>
+          <td>Jl. Abri, Dusun 2, Gang Bonjol, Desa Hulu, Pancur Batu</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>:</td>
+          <td>Dickywahyudi22@outlook.com</td>
+        </tr>
+        <tr>
+          <td>Telepon/WhatsApp</td>
+          <td>:</td>
+          <td>083801830930</td>
+        </tr>
+        <tr>
+          <td>Tanggal Lahir</td>
+          <td>:</td>
+          <td>22 Juni 2001</td>
+        </tr>
+        <tr>
+          <td>Pendidikan saat ini</td>
+          <td>:</td>
+          <td>D3 Teknologi Komputer</td>
+        </tr>
+      </tbody></table>
+    </div>
+    <style>
+        body {
+          color: #ffffff;
+          font-family: sans-serif;
+          text-align: center;
+        }
+        .container {
+         margin: 50px auto;
+         max-width: 600px;
+         padding: 20px;
+         background-color: #222;
+         border-radius: 10px;
+        }
+        h1 {
+          color: #ffffff;
+          font-size: 20px;
+          margin-top: 10px;
+        }
+        #clock {
+          color: #ffffff;
+          font-size: 60px;
+          margin-top: 10px;
+        }
+      </style>
+    </head>
+    <body> <div class="container">
+      <h1><em>"Study Hard And Make Progress Everday"</em></h1>
+      <h1>-Dicky Wahyudi-</h1>
+      <div id="clock"></div>
+      <script>
+        function updateClock() {
+          let now = new Date();
+          let hours = now.getHours();
+          let minutes = now.getMinutes();
+          let seconds = now.getSeconds();
+  
+          if (hours < 10) {
+            hours = '0' + hours;
+          }
+          if (minutes < 10) {
+            minutes = '0' + minutes;
+          }
+          if (seconds < 10) {
+            seconds = '0' + seconds;
+          }
+  
+          let clock = document.querySelector('#clock');
+          clock.innerHTML = hours + ':' + minutes + ':' + seconds;
+        }
+  
+        setInterval(updateClock, 1000);
+      </script> 
+      </div>
+    </body>
+</body>
+</html>
+    
